@@ -19,7 +19,14 @@
 
 
             <ol>
-                <li v-for="todo in todos">{{ todo }}</li>
+                <li v-for="(todo, index) in todos">
+                    {{ todo }}
+                     <!-- <button @cliick="editTodo">Edit</button> -->
+
+                <button @cliick="deleteTodo(index)">Delete</button>
+
+                </li>
+               
             </ol>
         </div>
     
