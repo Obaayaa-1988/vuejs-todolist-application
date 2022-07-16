@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -7,36 +8,43 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.0/vue.js"></script>
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <link rel='stylesheet' type='text/css' media='screen' href='style.css'> 
-    
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+
 </head>
+
 <body>
     <div id="app">
         <div class="container">
             <h1>Todo List APP</h1>
-            <input type="text" placeholder="enter your todo" v-model="todo">
-            <input type="submit" value="add" @click="addTodo">
+            <div v-if="!isEditing">
+                <input type="text" placeholder="enter your todo" v-model="todo">
+                <input type="submit" value="add" @click="addTodo">
+            </div>
 
+            <div v-else>
+                <input type="text" placeholder="enter your todo" v-model="todo">
+                <input type="submit" value="update" @click="updateTodo">
+            </div>
 
             <ol>
                 <li v-for="(todo, index) in todos">
                     {{ todo }}
-                     <!-- <button @cliick="editTodo">Edit</button> -->
+                    <button @click="editTodo(index, todo)">Edit</button>
+                    <button @click="deleteTodo(index)">Delete</button>
 
-                <button @cliick="deleteTodo(index)">Delete</button>
 
                 </li>
-               
+
             </ol>
         </div>
-    
+
 
     </div>
 
-    
 
-   
-<!-- <div id="app">
+
+
+    <!-- <div id="app">
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-80">        
         <input type="text" v-model="firstname" placeholder="enter your first name" class="border border-black-500 rounded" />
         <br>
@@ -44,6 +52,7 @@
         </div>
 
     </div> -->
- <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
